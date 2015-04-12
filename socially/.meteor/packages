@@ -10,3 +10,5 @@ angularui:angular-ui-router
 accounts-password
 accounts-ui
 accounts-facebook
+urigo:angular-utils-pagination
+tmeasday:publish-counts
