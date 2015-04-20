@@ -21,7 +21,7 @@
 			    limit: parseInt($scope.getReactively('perPage')),
 			    skip: parseInt(($scope.getReactively('page') - 1) * $scope.getReactively('perPage')),
 			    sort: $scope.getReactively('sort')
-			  }).then(function(){
+			  }, $scope.getReactively('search')).then(function(){
 			    $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
 			  });
 
