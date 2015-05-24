@@ -1,4 +1,7 @@
 Meteor.publish("parties", function (options, searchString) {
+  if (searchString == null)
+    searchString = '';
+
   Counts.publish(this, 'numberOfParties', Parties.find({
     'name' : { '$regex' : '.*' + searchString || '' + '.*', '$options' : 'i' },
     $or:[
@@ -10,8 +13,7 @@ Meteor.publish("parties", function (options, searchString) {
         {owner: this.userId},
         {owner: {$exists: true}}
       ]}
-  ]}), { noReady: true });  
-
+    ]}), { noReady: true });
   return Parties.find({
     'name' : { '$regex' : '.*' + searchString || '' + '.*', '$options' : 'i' },
     $or:[
@@ -23,5 +25,5 @@ Meteor.publish("parties", function (options, searchString) {
         {owner: this.userId},
         {owner: {$exists: true}}
       ]}
-    ]}, options);
+    ]} ,options);
 });
